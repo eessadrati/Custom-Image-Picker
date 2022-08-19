@@ -18,7 +18,7 @@ const ImagePicker = ({pick,setPick,setItems}) => {
        const getMedia = async () => {
            setLoading(true)
            const firstPage = await MediaLibrary.getAssetsAsync({
-               sortBy:[MediaLibrary.SortBy.modificationTime],
+               sortBy:[MediaLibrary.SortBy.default],
                mediaType: ['photo', 'video'],
            });
            if(pick){
@@ -37,7 +37,7 @@ const loadMoreMedia = async ()=>{
   if(nextMedia.hasNextPage){
     const nextPage = await MediaLibrary.getAssetsAsync({
       after: nextMedia.endCursor,
-      sortBy:[MediaLibrary.SortBy.modificationTime],
+      sortBy:[MediaLibrary.SortBy.default],
       mediaType: ['photo', 'video'],
   });
   hasNextPage = nextPage.hasNextPage
@@ -50,7 +50,7 @@ const onRefresh = async()=>{
   setRefreshing(true)
   const firstPage = await MediaLibrary.getAssetsAsync({
     first: 20,
-    sortBy:[MediaLibrary.SortBy.modificationTime],
+    sortBy:[MediaLibrary.SortBy.default],
     mediaType: ['photo', 'video'],
   });
   setMedia(firstPage.assets);
