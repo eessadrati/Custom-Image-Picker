@@ -25,8 +25,11 @@ const pickImage=()=>{
       return;
     }
     requestPermission();
-  
-  setPick(true);
+   if(status.granted){
+    setPick(true);
+
+    }
+ 
 }
 const win = Dimensions.get('window');
 
